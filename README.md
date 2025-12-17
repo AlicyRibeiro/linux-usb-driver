@@ -71,13 +71,108 @@ static struct usb_device_id usb_device_list[] = {
 ```
 A macro MODULE_DEVICE_TABLE permite que o kernel carregue automaticamente o módulo quando um dispositivo compatível for conectado.
 
-### Funções Probe e Disconnect
+---
+
+## Funções Probe e Disconnect
 
 #### my_probe()
-Executada automaticamente quando um dispositivo USB compatível é conectado.
-Exibe no log o ID do dispositivo detectado.
+- Executada automaticamente quando um dispositivo USB compatível é conectado.
+- Exibe no log o ID do dispositivo detectado.
 
 #### my_disconnect()
-Executada quando o dispositivo USB é removido da porta.
+- Executada quando o dispositivo USB é removido da porta.
 
 Essas funções permitem monitorar eventos de conexão e desconexão de dispositivos USB.
+
+---
+
+## Como Compilar
+
+Dentro da pasta meu_driver_usb/ execute:
+
+```bash
+make
+```
+Isso gera o arquivo:
+
+```bash
+meu_driver.ko
+```
+
+---
+
+## Como Carregar o Módulo
+
+```bash
+sudo insmod meu_driver.ko
+```
+
+Verifique as mensagens do kernel:
+```bash
+dmesg -w
+```
+---
+
+## Como Remover o Módulo
+
+```bash
+sudo rmmod meu_driver
+```
+⚠️ Sempre remova o módulo antes de recompilar ou carregá-lo novamente.
+
+---
+
+## Conflito com Drivers de Armazenamento USB
+
+Ao utilizar um pen drive, pode ocorrer conflito com os módulos padrão do kernel:
+
+- `usb_storage`
+- `uas`
+
+Para testes, esses módulos podem ser desabilitados temporariamente adicionando ao arquivo:
+```bash
+/etc/modprobe.d/blacklist.conf
+```
+
+As linhas:
+```bash
+blacklist usb_storage
+blacklist uas
+```
+
+Em seguida, remova os módulos carregados:
+```bash
+sudo rmmod usb_storage
+sudo rmmod uas
+```
+⚠️ Importante: Remova essas entradas da blacklist após finalizar os testes.
+
+---
+
+## Logs Úteis
+Para acompanhar os eventos do driver em tempo real:
+```bash
+dmesg -w
+```
+Ou:
+```bash
+tail -f /var/log/syslog
+```
+---
+
+##  Referências
+
+- **LDD3 — Linux Device Drivers**  
+  https://lwn.net/Kernel/LDD3/
+
+- **Sysplay Linux Drivers Book**  
+  https://sysplay.github.io/books/LinuxDrivers/book/
+
+- **Sysplay Drivers Documentation**  
+  https://sysplay.in/index.php?pagefile=linux_drivers
+
+---
+
+## Ambiente de Desenvolvimento e Testes
+
+Este módulo foi desenvolvido e testado em uma **máquina virtual Linux**, garantindo um ambiente seguro para compilação e carregamento de módulos de kernel.
