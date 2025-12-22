@@ -1,1 +1,0 @@
-savedcmd_/home/teste/drivers/meu_driver_usb/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/teste/drivers/meu_driver_usb/Module.symvers -T /home/teste/drivers/meu_driver_usb/modules.order -i Module.symvers -e 

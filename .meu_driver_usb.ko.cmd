@@ -1,1 +1,0 @@
-savedcmd_/home/teste/drivers/meu_driver_usb/meu_driver_usb.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/teste/drivers/meu_driver_usb/meu_driver_usb.ko /home/teste/drivers/meu_driver_usb/meu_driver_usb.o /home/teste/drivers/meu_driver_usb/meu_driver_usb.mod.o
