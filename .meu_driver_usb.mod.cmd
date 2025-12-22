@@ -1,0 +1,1 @@
+savedcmd_/home/teste/drivers/meu_driver_usb/meu_driver_usb.mod := printf '%s\n'   meu_driver_usb.o | awk '!x[$$0]++ { print("/home/teste/drivers/meu_driver_usb/"$$0) }' > /home/teste/drivers/meu_driver_usb/meu_driver_usb.mod
