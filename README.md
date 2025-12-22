@@ -160,6 +160,16 @@ tail -f /var/log/syslog
 ```
 ---
 
+##  Funcionamento do Character Device Driver
+
+A imagem abaixo demonstra o funcionamento do driver de dispositivo de caractere,
+incluindo a criação do device node em `/dev`, operações de leitura e escrita
+e as mensagens registradas no log do kernel.
+
+![Funcionamento do USB Driver](images/funcionamento_usb_driver.png)
+
+---
+
 ##  Referências
 
 - **LDD3 — Linux Device Drivers**  
