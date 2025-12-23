@@ -1,0 +1,79 @@
+cd /home/nome/do/caminho/da/pasta
+=> Deixe o pendrive desconectado nesse começo.
+
+
+make clean
+make
+
+lsblk
+
+
+=>Desmontar o pendrive
+Se ele estiver montado:
+
+sudo umount /dev/sdb1
+
+=>Remover módulos que competem com o seu (uas e usb_storage)
+Veja se eles estão carregados:
+
+lsmod | egrep 'usb_storage|uas'
+
+Se aparecer:
+uas
+usb_storage
+
+
+remova nessa ordem:
+sudo rmmod uas
+sudo rmmod usb_storage
+
+
+Se aparecer “not currently loaded”, beleza, significa que aquele módulo já não está carregado.
+
+Garantir que seu módulo antigo não ficou carregado:
+lsmod | grep meu
+
+Se aparecer:
+meu_driver_usb   12288  0
+
+
+remova:
+sudo rmmod meu_driver_usb
+
+
+=>Carregar o seu driver USB
+
+Ainda na pasta do driver:
+sudo insmod meu_driver_usb.ko
+
+Confirme:
+lsmod | grep meu
+
+
+Saída esperada:
+meu_driver_usb   12288  0
+
+Veja o log do kernel:
+dmesg | tail -10
+
+
+Em outro terminal (ou aba):
+sudo dmesg -w
+
+TESTE PRINCIPAL – Conectar e remover o pendrive
+
+-conecta e desconecta o pendrive
+
+
+=>Ver se o driver está associado ao dispositivo
+Se quiser conferir mais a fundo:
+ls /sys/bus/usb/drivers
+
+Você deve ver meu_usb_driver na lista.
+
+depois:
+ls /sys/bus/usb/drivers/meu_usb_driver
+
+Se aparecer algo tipo 1-2:1.0 junto de bind, unbind, uevent, significa que seu driver está ligado à interface USB do pendrive.
+
+
