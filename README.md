@@ -11,11 +11,12 @@ os mecanismos fornecidos pelo subsistema USB do Linux.
 
 ###  Estrutura dos Arquivos
 
-* meu_driver_usb/
-* ├── Makefile
-* ├── meu_driver.c
-* └── meu_driver.h
-
+```
+ meu_driver_usb/
+ ├── Makefile
+ ├── meu_driver.c
+ └── meu_driver.h
+``
 ---
 
 ##  Funcionalidades do Módulo
