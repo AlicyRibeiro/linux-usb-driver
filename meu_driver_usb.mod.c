@@ -1,3 +1,27 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename:  meu_driver_usb.mod.c
+ *
+ *
+ *        Version:  1.0
+ *        Created:  2025
+ *       Revision:  none
+ *
+ *         Author:  Ana Alicy Ribeiro
+ *        Contact:  github.com/<AlicyRibeiro>
+ *   Organization:  Universidade Federal do Ceará - Campus Quixadá
+ *
+ *   GitHub Repo:   linux-usb-driver
+ *
+ *
+ *   Notes:
+ *   Este código foi desenvolvido exclusivamente para fins educacionais.
+ *
+ * =====================================================================================
+ */
+
+
 #include <linux/module.h>
 #define INCLUDE_VERMAGIC
 #include <linux/build-salt.h>
