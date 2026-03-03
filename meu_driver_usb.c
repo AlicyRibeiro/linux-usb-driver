@@ -1,3 +1,26 @@
+/*
+ * =====================================================================================
+ *
+ *       Filename: meu_driver_usb.c
+ *
+ *
+ *        Version:  1.0
+ *        Created:  2025
+ *       Revision:  none
+ *
+ *         Author:  Ana Alicy Ribeiro
+ *        Contact:  github.com/<AlicyRibeiro>
+ *   Organization:  Universidade Federal do Ceará - Campus Quixadá
+ *
+ *   GitHub Repo:   linux-usb-driver
+ *
+ *
+ *   Notes:
+ *   Este código foi desenvolvido exclusivamente para fins educacionais.
+ *
+ * =====================================================================================
+ */
+
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/usb.h>
@@ -7,16 +30,7 @@ MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Ana Alicy");
 MODULE_DESCRIPTION("Driver USB simples");
 
-// Tabela de dispositivos suportados
-/*
-static struct usb_device_id tabela_ids[] = {
-    { USB_DEVICE(0x23a9, 0xef18) },   // SEU pendrive
-    
-        { USB_INTERFACE_INFO(USB_CLASS_MASS_STORAGE, 0x06, 0x50) },
-        
-    { }
-};
-*/
+
 static const struct usb_device_id tabela_ids[] = {
     { USB_DEVICE(ID_VENDOR, ID_PRODUCT) },   // usa os #defines do .h
     { }                                      // entrada terminadora
